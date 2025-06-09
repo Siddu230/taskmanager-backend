@@ -2,7 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-app.use(cors());
+// Configure CORS to allow requests from your Netlify domain
+const corsOptions = {
+  origin: 'https://regal-muffin-be5178.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type'], // Allowed headers
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 let tasks = [];
